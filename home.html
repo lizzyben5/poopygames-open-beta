@@ -18,8 +18,16 @@
     // Redirect to the new domain
     window.location.href = newDomain;
   }
+ </script>
+<!-- cookie check -->  
+<script>
+window.onload = function() {
+        var hidePopupCookie = document.cookie.split('; ').find(row => row.startsWith('hidePopup='));
+        if (!hidePopupCookie) {
+            window.location.href = '/';
+        }
+    };
 </script>
-
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
