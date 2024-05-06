@@ -2,16 +2,9 @@
 <html lang="en">
 <head>
 
-<style type="text/css">* { padding: 0; margin: 0; }</style>
-
 <script>history.scrollRestoration = "manual"
 document.cookie = "password=creeper";
-
-   setTimeout(function() {
-      window.scrollBy(0, 175);
-   }, 2200);
 </script>
-
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -60,18 +53,13 @@ document.cookie = "password=creeper";
     });
   </script>
 </head>
-<body>
-</body>
+
 </html>
 <html>
 <style>
-
-body {    
-    margin: 0;
-    padding: 0;
-}
 		/* Your CSS code goes here */
 		/* Style Settings */
+        
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
 :root {
@@ -92,9 +80,9 @@ html{
     scroll-behavior: smooth
 }
 .box-image{
-    border-radius: 0%;
-    width: 0px;
-    height: 0px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
 
 }
 .badge {
@@ -178,7 +166,7 @@ h6{
     margin-bottom: 20px;
     color: rgb(136, 136, 136);
     font-family: var(--font);
-    padding: 0px;
+    padding: 17px;
 }
 
 .games{
@@ -193,7 +181,7 @@ h6{
 }
 
 .games a:not(.epci){
-    scroll-margin-top: 0em;
+    scroll-margin-top: 2em;
     outline:transparent;
     display: flex;
     width: 250px;
@@ -329,9 +317,7 @@ h6{
 </head>
 <body>
 	
-
 	<div id="website-content" style="display: inline;">
-
 <html>
     <head>
 
@@ -352,7 +338,6 @@ h6{
         <meta name="theme-color" content="var(--bgColor)">
     </head>
     <body>
-            <!--Page Content Below-->
         <img id="userPhoto" class="animated rubberBand slow" src="icons/logo.png" alt="PoopyGamesLogo">
         <style>
 		/* Remove the underline and change the color of the link */
@@ -434,7 +419,7 @@ h6{
     /* Add your CSS styles here */
     body {
       background-color: #1C1C1C;
-      display: flex;
+      display: block;
       justify-content: center;
       align-items: center;
       height: 100vh;
@@ -486,43 +471,7 @@ h6{
             <div class="game_title"><input placeholder="Search" id="search" class="search" onkeyup="search_it()" type="search"><select id="tags" class="button" onclick="search_it()"><option value="all">All Farts</option><option value="pop">Popular</option><option value="two">Two Player</option><option value="stream">Streaming (Broken)</option><option value="bad">Bad Farts</option></select></div>
             <h2 class="animated jello game_title">All farts:</h2>
             
-            <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    /* CSS for the popup */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      padding: 20px;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      z-index: 1;
-    }
-    
-    /* CSS for the close button */
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-    }
-    
-    /* CSS for the button and description rows */
-    .button-row {
-      margin-bottom: 10px;
-    }
-    
-    .button-row button {
-      margin-right: 10px;
-    }
-  </style>
-</head>
-<body>
-
+<!--Games-->
   <a id="soccerrandom" class="link" href="./play/soccerrandom/" target="_blank"><span class="bar"></span><img src="./icons/soccerrandom.webp"><b>Soccer Random</b><span class="badge"><i class="fa fa-star" aria-hidden="true"></i> NEW</span></a>
 	<a id="basketrandom" class="link" href="./play/basketrandom/" target="_blank"><span class="bar"></span><img src="./icons/basketrandom.webp"><b>Basket Random</b><span class="badge"><i class="fa fa-star" aria-hidden="true"></i> NEW</span></a>
   <a id="Papaspizza" class="link" href="./play/papaspizza/" target="_blank"><span class="bar"></span><img src="./icons/papaspizza.webp"><b>Papa's Pizzeria</b><span class="badge"><i class="fa fa-wrench" aria-hidden="true"></i> FIXED</span></a>
@@ -834,7 +783,44 @@ h6{
     </body>
 </html>
 	</div>
-	
+	<script>
+		var attempts = 0;
+
+		// Check if the password is correct when the form is submitted
+		document.querySelector("#password-form form").addEventListener("submit", function(event) {
+			event.preventDefault();
+			var password = document.querySelector("#password").value.toLowerCase();
+			if (password === "creeper") {
+				// Set a cookie to remember the password
+				document.cookie = "password=creeper; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+				document.querySelector("#password-form").style.display = "none";
+				document.querySelector("#website-content").style.display = "block";
+				document.querySelector("style").disabled = false;
+			} else {
+				attempts++;
+				if (attempts >= 5) {
+					// Set a cookie to ban the user for 10 minutes
+					document.cookie = "ban=true; expires=" + new Date(Date.now() + 10 * 60 * 1000).toUTCString();
+					alert("To keep our website safe, you have been banned for 10 minutes.");
+					document.querySelector("#password-form").style.display = "none";
+				} else {
+					alert("Incorrect answer. Please try again.");
+				}
+			}
+		});
+
+		// Check if the cookie exists when the page loads
+		if (document.cookie.indexOf("password=creeper") !== -1) {
+			document.querySelector("#password-form").style.display = "none";
+			document.querySelector("#website-content").style.display = "block";
+			document.querySelector("style").disabled = false;
+		} else if (document.cookie.indexOf("ban=true") !== -1) {
+			document.querySelector("#password-form").style.display = "none";
+			alert("You are currently banned. Please try again later.");
+		} else {
+			document.querySelector("style").disabled = true;
+		}
+	</script>
             
 <style>
 /* start of background */
@@ -1206,308 +1192,6 @@ button:focus{
   transform: translate(95vw,90vh);
 }
 </style>
-<style x-alias-name="navbar">
-            html, body {
-                margin: 0;
-                padding: 0;
-            }
-            .navbar {
-                /*position: sticky;*/
-                /*position: fixed;*/
-                top: 0;
-                left: 0;
-                width: calc(100% - 40px);
-                margin: 0;
-                padding: 20px;
-                background-color: rgb(67, 67, 67);
-                overflow-x: scroll;
-                white-space: nowrap; /* 👈 only change */
-            }
-            .navbar-item {
-                background-color: rgb(175, 175, 175);
-                height: 100%;
-                border: solid 2px black;
-                margin: 10px;
-                padding: 5px;
-                cursor: pointer;
-            }
-        </style>
-        <style x-alias-name="modal">
-            /*body {font-family: Arial, Helvetica, sans-serif;}*/
-            
-            /* The Modal (background) */
-            .modal {
-              text-align: left;
-              display: none; /* Hidden by default */
-              position: fixed; /* Stay in place */
-              z-index: 1; /* Sit on top */
-              padding-top: 100px; /* Location of the box */
-              left: 0;
-              top: 0;
-              width: 100%; /* Full width */
-              height: 100%; /* Full height */
-              overflow: auto; /* Enable scroll if needed */
-              background-color: rgb(0,0,0); /* Fallback color */
-              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
-            .modal * {
-                text-align: left;
-                color: black;
-                font-style: normal;
-            }
-            /*.modal .modal-text {
-                display: inline-block;
-            }*/
-            
-            /* Modal Content */
-            .modal-content {
-              position: relative;
-              background-color: #fefefe;
-              margin: auto;
-              padding: 0;
-              border: 1px solid #888;
-              width: 80%;
-              box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-              -webkit-animation-name: animatetop;
-              -webkit-animation-duration: 0.4s;
-              animation-name: animatetop;
-              animation-duration: 0.4s
-            }
-            
-            /* Add Animation */
-            @-webkit-keyframes animatetop {
-              from {top:-300px; opacity:0} 
-              to {top:0; opacity:1}
-            }
-            
-            @keyframes animatetop {
-              from {top:-300px; opacity:0}
-              to {top:0; opacity:1}
-            }
-            
-            /* The Close Button */
-            .modal-close {
-              color: white;
-              float: right;
-              font-size: 28px;
-              font-weight: bold;
-            }
-            
-            .modal-close:hover,
-              .modal-close:focus {
-              color: #000;
-              text-decoration: none;
-              cursor: pointer;
-            }
-            
-            .modal-header {
-              padding: 2px 16px;
-              background-color: #5cb85c;
-              color: white;
-            }
-            
-            .modal-body {padding: 2px 16px;}
-            
-            .modal-footer {
-              padding: 2px 16px;
-              background-color: #5cb85c;
-              color: white;
-            }
-            .btnreset {
-                display: inline-block;
-                border: none;
-                padding: 0.8rem 1.6rem;
-                margin: 0 10px;
-                text-decoration: none;
-                background: #0069ed;
-                color: #ffffff;
-                font-family: sans-serif;
-                font-size: 0.8rem;
-                cursor: pointer;
-                text-align: center;
-                transition: background 250ms ease-in-out, 
-                            transform 150ms ease;
-                -webkit-appearance: none;
-                -moz-appearance: none;
-            }
-            
-            .btnreset:hover,
-            .btnreset:focus {
-                background: #0053ba;
-            }
-            
-            .btnreset:focus {
-                outline: 1px solid #fff;
-                outline-offset: -4px;
-            }
-            
-            .btnreset:active {
-                transform: scale(0.99);
-            }
-        </style>
-        <script x-alias-name="cloak-function">
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            //alert(urlParams.get("disable"))
-            function getCookie(cname) {
-                let name = cname + "=";
-                let decodedCookie = decodeURIComponent(document.cookie);
-                let ca = decodedCookie.split(';');
-                for(let i = 0; i <ca.length; i++) {
-                    let c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                    }
-                    if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                    }
-                }
-                return "";
-            }
-            function inIframe() {
-                try {
-                    return window.self !== window.top;
-                } catch (e) {
-                    return true;
-                }
-            }
-            if ((! inIframe()) && getCookie("cloak") && (! urlParams.get("disable"))){
-                //alert("ye")
-                console.log(window.location.href);
-                window.doCloak = true;
-                if (cloak(window.location.href, true)){
-                    window.location.replace("https://google.com");
-                }
-            }
-            else {
-                if (!inIframe()){
-                    document.cookie = "cloak=";
-                    window.doCloak = false;
-                }
-                else{
-                    window.doCloak = true;
-                }
-            }
-            function cloak(url, absolute){
-                absolute = absolute || false;
-                url = absolute ? url : window.location.href.replace(/\/$/, "") + url;
-                if (window.doCloak){
-                    //alert(url);
-                    //alert("Opening " + url)
-                    //Creates new ABC
-                    var page = new ABC({
-                        "type": "blank", //Blank, blob, or overwrite
-                        "url": url //Any url
-                    })
-                    //Set the type
-                    page.setType("blank");
-                    //Set the url
-                    page.setUrl(url);
-                    //Get iframe code
-                    page.getCode();
-                    //Open page
-                    var win = page.open();
-                    if (!win || win.closed || typeof win.closed=='undefined'){ 
-                        document.cookie = "cloak=";
-                        window.doCloak = false;
-                        alert("Fatal Error:\n\nNAME: ERR_POPUP_BLOCKED\nDESCRIPTION: Allow pop-ups to enable tab cloaking.")
-                        return false;
-                    }
-                    return true;
-                }
-                else{
-                    window.open(url);
-                }
-            }
-        </script>
-        <script x-alias-name="settings">
-            function toggleCloak(){
-                if (getCookie("cloak")){
-                    document.cookie = "cloak=";
-                    window.doCloak = false;
-                    window.open(window.location);
-                    window.open("https://google.com", "_top");
-                }
-                else{
-                    document.cookie = "cloak=1";
-                    window.doCloak = true;
-                    window.location.reload();
-                }
-            }
-        </script>
-        <script x-alias-name="rand-game">
-            function getRandomGame(){
-                parent = document.getElementById("links");
-                console.log(parent.children);
-            }
-        </script>
-    </head>
-    <body>
-        <div id="website-content">
-            <div class="navbar" z-index="9">
-                <span class="navbar-item" onclick="if ((getCookie('cloak') && confirm('Open debug link?')) || (! getCookie('cloak'))){window.location = 'https:/' + '/pasta.cluster.ws/codelet/';}">Bookmarklets</span>
-                <span class="navbar-item" onclick="window.location = 'https:/' + '/uv.hop.sh';">Proxies</span>
-                <span class="navbar-item" id="openSettings">Alternate URLs</span>
-                <span class="navbar-item" onclick="toggleCloak();" id="toggleCloak">Enable Tab Cloak</span>
-                <span class="navbar-item" onclick="alert('Release Notes:\n\n - Updated Minecraft\n - Added Tab Cloaking\n - Fixed bugs\n - Added Proxies\n - Added GBA Emulator\n - Added Google Snake\n - Added NationStates\n\nThanks, OddPVP, for the CSS and some (most) of the offline game data. Repository restored from lizzyben/poopygamesbeta, a fork of OddPVP/oddgames.')">Pasta Games v3.2.6</span>
-                <script x-alias-name="cloak-button-display">
-                    if (getCookie('cloak')){
-                        document.getElementById('toggleCloak').innerHTML = 'Disable Tab Cloak';
-                    }
-                </script>
-            </div>
-            
-            <!-- The Modal -->
-            <div id="settings" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="modal-close" id="closeSettings">&times;</span>
-                        <h2>Alternate Links</h2>
-                    </div>
-                    <div class="modal-body">
-                        <p><button class="btnreset" onclick="window.location='https:/' + '/play.cluster.ws';">OPEN</button>
-                            <b class="modal-text">play.cluster.ws</b> <span style="color: goldenrod;">&#9733;</span> (main)</p>
-                        <p><button class="btnreset" onclick="window.location='https:/' + '/pastagames.netlify.app';">OPEN</button>
-                            <b class="modal-text">pastagames.netlify.app</b></p>
-                        <p><button class="btnreset" onclick="window.location='https:/' + '/oddgames.vercel.app';">OPEN</button>
-                            <b class="modal-text">oddgames.vercel.app</b></p>
-                        <p><button class="btnreset" onclick="window.location='https:/' + '/odd-games.onrender.com';">OPEN</button>
-                            <b class="modal-text">pastagames.vercel.app</b></p>
-                        <!--p><button class="btnreset" onclick="window.location='https:/' + '/github.play.cluster.ws';">OPEN</button>
-                            <b class="modal-text">github.play.cluster.ws</b> (backup)</p-->
-                    </div>
-                    <div class="modal-footer">
-                        <br/>
-                    </div>
-                </div>
-                <script x-alias-name="modal-function">
-                    // Get the modal
-                    var settings = document.getElementById("settings");
-        
-                    // Get the button that opens the modal
-                    var openSettings = document.getElementById("openSettings");
-        
-                    // Get the <span> element that closes the modal
-                    var closeSettings = document.getElementById("closeSettings");
-        
-                    // When the user clicks the button, open the modal 
-                    openSettings.onclick = function() {
-                        settings.style.display = "block";
-                    }
-        
-                    // When the user clicks on <span> (x), close the modal
-                    closeSettings.onclick = function() {
-                        settings.style.display = "none";
-                    }
-        
-                    // When the user clicks anywhere outside of the modal, close it
-                    window.onclick = function(event) {
-                        if (event.target == settings) {
-                            settings.style.display = "none";
-                        }
-                    }
-                </script>
 </head>
 <body>
 <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
@@ -1521,5 +1205,4 @@ button:focus{
   <div class='light x8'></div>
   <div class='light x9'></div>
 </body>
-
 </html>
