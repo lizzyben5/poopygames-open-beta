@@ -250,7 +250,7 @@
             }
             else {
                 if (!inIframe()){
-                    document.cookie = "cloak="; expires=Thu, 18 Dec 2099 12:00:00 UTC";
+                    document.cookie = "cloak=; expires=Thu, 18 Dec 2099 12:00:00 UTC";
                     window.doCloak = false;
                 }
                 else{
@@ -277,7 +277,7 @@
                     //Open page
                     var win = page.open();
                     if (!win || win.closed || typeof win.closed=='undefined'){ 
-                        document.cookie = "cloak=";
+                        document.cookie = "cloak=; expires=Thu, 18 Dec 2099 12:00:00 UTC";
                         window.doCloak = false;
                         alert("Fatal Error:\n\nNAME: ERR_POPUP_BLOCKED\nDESCRIPTION: Allow pop-ups to enable tab cloaking and try again.")
                         return false;
@@ -293,13 +293,13 @@
   <script x-alias-name="settings">
     function toggleCloak(){
                 if (getCookie("cloak")){
-                    document.cookie = "cloak="; expires=Thu, 18 Dec 2099 12:00:00 UTC";
+                    document.cookie = "cloak=; expires=Thu, 18 Dec 2099 12:00:00 UTC";
                     window.doCloak = false;
                     window.open(window.location);
                     window.open("https://google.com", "_top");
                 }
                 else{
-                    document.cookie = "cloak=1"; expires=Thu, 18 Dec 2099 12:00:00 UTC";
+                    document.cookie = "cloak=1; expires=Thu, 18 Dec 2099 12:00:00 UTC";
                     window.doCloak = true;
                     window.location.reload();
                 }
