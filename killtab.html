@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+</body>
+</html>
+<button onclick="KillTab()" class="solid-dark-button">Kill Tab</button>
+
+<script>
+function KillTab() {
+  var txt;
+  if (confirm("Are you sure you want to close the tab?")) {
+     alert('Closing Tab');
+    window.top.close();
+  } else {
+    alert('Tab Kill Canceled');
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+<style>
+.solid-dark-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.solid-dark-button:hover {
+  background-color: #444;
+}
+</style>
