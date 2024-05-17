@@ -71,8 +71,23 @@
     <div class="gm4html5_div_class" id="gm4html5_div_id">
       <img src="Clouds/splash.png" id="GM4HTML5_loadingscreen" alt="GameMaker:HTML5 loading screen" style="display: none;" />
       <!-- Create the canvas element the game draws to -->
-      <canvas id="canvas" width="800" height="600">
-        <p>Your browser doesn't support HTML5 canvas.</p>
+       <style>
+      body {
+         height : 100%;
+         width : 100%;
+      }
+      canvas { 
+         background-color: #ffff00;
+         display: block;
+         position: absolute;
+         top: 0;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         height: 100%;
+         width: 100%;
+      }
+   </style>
       </canvas>
     </div>
 
